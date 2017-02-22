@@ -24,6 +24,7 @@ Graph g;
 std::string filename = "output.dot";
 std::ofstream fout(filename.c_str());
 bool loading = false;
+bool loaded = false;
 
 enum wxbuildinfoformat {
     short_f, long_f };
@@ -55,6 +56,7 @@ const long projectGraph3Frame::ID_BUTTON1 = wxNewId();
 const long projectGraph3Frame::ID_BUTTON2 = wxNewId();
 const long projectGraph3Frame::ID_BUTTON3 = wxNewId();
 const long projectGraph3Frame::ID_STATICTEXT1 = wxNewId();
+const long projectGraph3Frame::ID_STATICBITMAP1 = wxNewId();
 //*)
 
 BEGIN_EVENT_TABLE(projectGraph3Frame,wxFrame)
@@ -66,12 +68,14 @@ projectGraph3Frame::projectGraph3Frame(wxWindow* parent,wxWindowID id)
 {
     //(*Initialize(projectGraph3Frame)
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
+    SetClientSize(wxSize(857,444));
     btn_loadfile = new wxButton(this, ID_BUTTON1, _("Load File"), wxPoint(160,80), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
     btn_showGraph = new wxButton(this, ID_BUTTON2, _("Create"), wxPoint(160,168), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
     btn_other = new wxButton(this, ID_BUTTON3, _("Other..."), wxPoint(160,264), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON3"));
     txt_titulo = new wxStaticText(this, ID_STATICTEXT1, _("PROJECT #3"), wxPoint(112,24), wxDefaultSize, 0, _T("ID_STATICTEXT1"));
     wxFont txt_tituloFont(22,wxDEFAULT,wxFONTSTYLE_NORMAL,wxNORMAL,false,_T("padmaa"),wxFONTENCODING_DEFAULT);
     txt_titulo->SetFont(txt_tituloFont);
+    Img_grafo = new wxStaticBitmap(this, ID_STATICBITMAP1, wxNullBitmap, wxPoint(656,24), wxDefaultSize, wxSIMPLE_BORDER, _T("ID_STATICBITMAP1"));
 
     Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&projectGraph3Frame::Onbtn_loadfileClick1);
     Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&projectGraph3Frame::Onbtn_showGraphClick);
@@ -104,11 +108,15 @@ void projectGraph3Frame::OnClose(wxCloseEvent& event)
 
 void projectGraph3Frame::Onbtn_showGraphClick(wxCommandEvent& event)
 {
-    if(loading == true){
-    boost::write_graphviz(fout,g);
+    if(loading == true && loaded == false){
+        boost::write_graphviz(fout,g);
     wxMessageDialog(NULL,"Se ha creado el grafo correctamente","Cargado",wxOK|wxCENTER,wxDefaultPosition).ShowModal();
+    system("dot output.dot -Tpng -o output.png");
+    wxIcon* icono= new wxIcon("output.png");
+    Img_grafo->SetIcon(*icono);
+    loaded = true;
     }else{
-        wxMessageDialog(NULL,"Lo siento!, cargue primero los datos!","Cargado",wxOK|wxCENTER,wxDefaultPosition).ShowModal();
+        wxMessageDialog(NULL,"Lo siento!","Cargado",wxOK|wxCENTER,wxDefaultPosition).ShowModal();
     }
 }
 
@@ -118,9 +126,23 @@ void projectGraph3Frame::Onbtn_loadfileClick1(wxCommandEvent& event)
         Graph::vertex_descriptor v0 = g.add_vertex();
         Graph::vertex_descriptor v1 = g.add_vertex();
         Graph::vertex_descriptor v2 = g.add_vertex();
+        Graph::vertex_descriptor v3 = g.add_vertex();
+        Graph::vertex_descriptor v4 = g.add_vertex();
+        Graph::vertex_descriptor v5 = g.add_vertex();
+        Graph::vertex_descriptor v6 = g.add_vertex();
+        Graph::vertex_descriptor v7 = g.add_vertex();
+        Graph::vertex_descriptor v8 = g.add_vertex();
         boost::add_edge(v0,v1,g);
         boost::add_edge(v1,v0,g);
         boost::add_edge(v0,v2,g);
+        boost::add_edge(v2,v0,g);
+        boost::add_edge(v1,v4,g);
+        boost::add_edge(v2,v3,g);
+        boost::add_edge(v3,v6,g);
+        boost::add_edge(v4,v5,g);
+        boost::add_edge(v5,v8,g);
+        boost::add_edge(v6,v7,g);
+
         loading = true;
         wxMessageDialog(NULL,"Ya Cargo","Cargado",wxOK|wxCENTER,wxDefaultPosition).ShowModal();
 

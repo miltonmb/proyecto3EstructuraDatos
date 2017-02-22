@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
 	<object class="wxFrame" name="projectGraph3Frame">
+		<size>857,444</size>
 		<id_arg>0</id_arg>
 		<handler function="OnClose" entry="EVT_CLOSE" />
 		<object class="wxButton" name="ID_BUTTON1" variable="btn_loadfile" member="yes">
@@ -28,6 +29,9 @@
 				<family>default</family>
 				<face>padmaa</face>
 			</font>
+		</object>
+		<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="Img_grafo" member="yes">
+			<pos>656,24</pos>
 		</object>
 	</object>
 </wxsmith>

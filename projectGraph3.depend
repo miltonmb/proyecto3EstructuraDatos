@@ -1000,3 +1000,34 @@
 
 1485352693 /usr/include/wx-3.0/wx/gtk/msgdlg.h
 
+1487714578 source:/home/milton/Escritorio/Estructura/proyecto3EstructuraDatos/projectGraph3App.cpp
+	"projectGraph3App.h"
+	"projectGraph3Main.h"
+	<wx/image.h>
+
+1487714578 /home/milton/Escritorio/Estructura/proyecto3EstructuraDatos/projectGraph3App.h
+	<wx/app.h>
+
+1487780258 /home/milton/Escritorio/Estructura/proyecto3EstructuraDatos/projectGraph3Main.h
+	<wx/button.h>
+	<wx/frame.h>
+	<wx/stattext.h>
+	<wx/statbmp.h>
+
+1485352692 /usr/include/wx-3.0/wx/statbmp.h
+	"wx/defs.h"
+	"wx/control.h"
+	"wx/bitmap.h"
+	"wx/icon.h"
+	"wx/univ/statbmp.h"
+	"wx/msw/statbmp.h"
+	"wx/motif/statbmp.h"
+	"wx/gtk/statbmp.h"
+	"wx/gtk1/statbmp.h"
+	"wx/osx/statbmp.h"
+	"wx/cocoa/statbmp.h"
+	"wx/os2/statbmp.h"
+
+1485352693 /usr/include/wx-3.0/wx/gtk/statbmp.h
+	"wx/icon.h"
+
