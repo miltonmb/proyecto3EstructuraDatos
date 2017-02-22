@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="projectGraph3Frame">
+		<id_arg>0</id_arg>
+		<handler function="OnClose" entry="EVT_CLOSE" />
+		<object class="wxButton" name="ID_BUTTON1" variable="btn_loadfile" member="yes">
+			<label>Load File</label>
+			<pos>160,80</pos>
+			<handler function="Onbtn_loadfileClick1" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxButton" name="ID_BUTTON2" variable="btn_showGraph" member="yes">
+			<label>Create</label>
+			<pos>160,168</pos>
+			<handler function="Onbtn_showGraphClick" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxButton" name="ID_BUTTON3" variable="btn_other" member="yes">
+			<label>Other...</label>
+			<pos>160,264</pos>
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT1" variable="txt_titulo" member="yes">
+			<label>PROJECT #3</label>
+			<pos>112,24</pos>
+			<font>
+				<size>22</size>
+				<style>normal</style>
+				<weight>normal</weight>
+				<underlined>0</underlined>
+				<family>default</family>
+				<face>padmaa</face>
+			</font>
+		</object>
+	</object>
+</wxsmith>
